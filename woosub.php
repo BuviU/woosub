@@ -199,3 +199,18 @@ function wcs_init_autoloader() {
 }
 
 WC_Subscriptions::init( $wcs_autoloader );
+
+
+//upeksha's
+// Disable update notifications for this plugin
+add_filter('site_transient_update_plugins', 'woosub_disable_update_notifications');
+
+function woosub_disable_update_notifications($transient) {
+    if (isset($transient->response[plugin_basename(__FILE__)])) {
+        unset($transient->response[plugin_basename(__FILE__)]);
+    }
+    return $transient;
+}
+
+// Clear update plugins transient
+delete_site_transient('update_plugins');
