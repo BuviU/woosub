@@ -2,7 +2,7 @@
 
 A Wordpress Plugin
 
-- Contributors: Upeksha Sandamini
+- Contributors: Upeksha Sandamini for AT Fusion Creative Agency
 - Tags: subscriptions, WooCommerce
 - Requires at least: 5.0
 - Tested up to: 6.3.2
