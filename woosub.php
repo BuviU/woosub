@@ -214,3 +214,27 @@ function woosub_disable_update_notifications($transient) {
 
 // Clear update plugins transient
 delete_site_transient('update_plugins');
+
+// Disable WooCommerce Helper Notice
+add_filter('woocommerce_helper_suppress_admin_notices', '__return_true');
+
+// Disable WooCommerce extension update notifications
+add_action('admin_init', 'woosub_disable_woocommerce_helper_notices');
+
+function woosub_disable_woocommerce_helper_notices() {
+    remove_action('admin_notices', 'woothemes_updater_notice');
+    remove_action('admin_notices', 'woothemes_helper_notice');
+}
+
+// Disable WooCommerce Subscriptions plugin notice
+add_action('admin_head', 'woosub_hide_woocommerce_subscriptions_notice');
+
+function woosub_hide_woocommerce_subscriptions_notice() {
+    ?>
+    <style>
+        .update-nag, .woocommerce-message, .woocommerce-error, .woocommerce-info {
+            display: none !important;
+        }
+    </style>
+    <?php
+}
